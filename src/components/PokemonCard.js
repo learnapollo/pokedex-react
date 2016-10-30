@@ -36,14 +36,22 @@ class PokemonCard extends React.Component {
           {this.state.imageUrl &&
             <img src={this.state.imageUrl} role='presentation' className='w-100 mv3' />
           }
-          <button className='pa3 red bn dim ttu pointer' onClick={this.handleDelete}>Delete</button>
-          <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.handleCancel}>Cancel</button>
-          {this.state.name && this.state.imageUrl &&
-            <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.handleUpdate}>Update</button>
-          }
+          <div className='flex justify-between'>
+            <button className='pa3 bn dim ttu bg-red pointer' onClick={this.handleDelete}>Delete</button>
+            <button className='pa3 bn dim ttu pointer' onClick={this.handleCancel}>Cancel</button>
+            {this.canUpdate()
+              ? <button className='pa3 bn dim ttu bg-dark-green pointer' onClick={this.handleUpdate}>Update</button>
+              : <button className='pa3 bn ttu gray light-gray'>Update</button>
+            }
+          </div>
         </div>
       </div>
     )
+  }
+
+  canUpdate = () => {
+    return this.state.name && this.state.imageUrl &&
+      (this.props.pokemon.name !== this.state.name || this.props.pokemon.imageUrl !== this.state.imageUrl)
   }
 
   handleUpdate = () => {
@@ -69,6 +77,8 @@ const updatePokemon = gql`
   mutation updatePokemon($id: ID!, $name: String!, $imageUrl: String!) {
     updatePokemon(id: $id, name: $name, imageUrl: $imageUrl) {
       id
+      name
+      imageUrl
     }
   }
 `

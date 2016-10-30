@@ -9,9 +9,11 @@ export default class PlaceholderPreview extends React.Component {
 
   render () {
     return (
-      <Link to={`/create/${this.props.trainerId}`}>
-          <img src='https://cdn0.iconfinder.com/data/icons/math-business-icon-set/93/1_1-128.png' alt='Create a new Pokemon' className='w-10' />
-          Create new Pokemon
+      <Link to={`/create/${this.props.trainerId}`} className='dib mw4 tc black link dim mr1 ml1 mb2 bg-white pa2'>
+        <div className='db'>
+          <span>+</span>
+        </div>
+        <span>Add Pokemon</span>
       </Link>
     )
   }

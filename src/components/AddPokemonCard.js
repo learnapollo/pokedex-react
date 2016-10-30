@@ -17,7 +17,6 @@ class AddPokemonCard extends React.Component {
   }
 
   render () {
-    console.log(this.props)
     return (
       <div className='w-100 pa4 flex justify-center'>
         <div style={{ maxWidth: 400 }} className=''>
@@ -36,13 +35,20 @@ class AddPokemonCard extends React.Component {
           {this.state.imageUrl &&
             <img src={this.state.imageUrl} role='presentation' className='w-100 mv3' />
           }
-          <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.handleCancel}>Cancel</button>
-          {this.state.name && this.state.imageUrl &&
-            <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.handleSave}>Save</button>
-          }
+          <div className='flex justify-between'>
+            <button className='pa3 bn dim ttu pointer' onClick={this.handleCancel}>Cancel</button>
+            {this.canSave()
+              ? <button className='pa3 bn dim ttu bg-dark-green pointer' onClick={this.handleSave}>Save</button>
+              : <button className='pa3 bn ttu gray light-gray'>Save</button>
+            }
+          </div>
         </div>
       </div>
     )
+  }
+
+  canSave = () => {
+    return this.state.name && this.state.imageUrl
   }
 
   handleSave = () => {
