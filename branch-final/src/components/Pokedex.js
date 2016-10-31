@@ -33,6 +33,6 @@ class Pokedex extends React.Component {
 
 const TrainerQuery = gql`query { Trainer(name: "Nilan") { id name ownedPokemons { id name imageUrl } } }`
 
-const ListPageWithData = graphql(TrainerQuery, {options: { pollInterval: 1000 } })(Pokedex)
+const PokedexWithData = graphql(TrainerQuery)(Pokedex)
 
-export default ListPageWithData
+export default PokedexWithData
