@@ -18,7 +18,7 @@ class PokemonPage extends React.Component {
     }
 
     return (
-      <div className='pa3 bg-black-05 ma3'>
+      <div>
         <PokemonCard pokemon={this.props.data.Pokemon} />
       </div>
     )
