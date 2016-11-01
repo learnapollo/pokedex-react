@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import PokemonPreview from '../components/PokemonPreview'
 class Pokedex extends React.Component {
 
   static propTypes = {
@@ -47,6 +48,6 @@ const PokedexWithData = graphql(TrainerQuery, {
       }
     }
   }
-)(withRouter(Pokedex))
+)(Pokedex)
 
 export default PokedexWithData
