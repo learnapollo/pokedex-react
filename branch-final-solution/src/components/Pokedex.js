@@ -1,8 +1,9 @@
 import React from 'react'
-import PokemonPreview from '../components/PokemonPreview'
-import PlaceholderPreview from '../components/PlaceholderPreview'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+
+import PokemonPreview from '../components/PokemonPreview'
+import PlaceholderPreview from '../components/PlaceholderPreview'
 
 class Pokedex extends React.Component {
 
