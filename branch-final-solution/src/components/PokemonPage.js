@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import { createFragment } from 'apollo-client'
 
 import PokemonCard from './PokemonCard'
 import PokemonCardHeader from './PokemonCardHeader'
