@@ -31,8 +31,25 @@ class Pokedex extends React.Component {
   }
 }
 
-const TrainerQuery = gql`query { Trainer(name: "<your name>") { id name ownedPokemons { id name imageUrl } } }`
+const TrainerQuery = gql`query($name: String!) {
+  Trainer(name: $name) {
+    id
+    name
+    ownedPokemons {
+      id
+      name
+      imageUrl
+    }
+  }
+}`
 
-const PokedexWithData = graphql(TrainerQuery)(Pokedex)
+const PokemonPageWithData = graphql(TrainerQuery, {
+  options: {
+      variables: {
+        name: "<your name>"
+      }
+    }
+  }
+)(withRouter(PokemonPage))
 
 export default PokedexWithData
