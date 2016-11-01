@@ -6,9 +6,9 @@ import { withRouter } from 'react-router'
 class PokemonCard extends React.Component {
 
   static propTypes = {
+    pokemon: React.PropTypes.object.isRequired,
     deletePokemon: React.PropTypes.func.isRequired,
     updatePokemon: React.PropTypes.func.isRequired,
-    pokemon: React.PropTypes.object.isRequired,
     router: React.PropTypes.object.isRequired,
   }
 
