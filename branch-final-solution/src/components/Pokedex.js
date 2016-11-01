@@ -43,13 +43,13 @@ const TrainerQuery = gql`query($name: String!) {
   }
 }`
 
-const PokemonPageWithData = graphql(TrainerQuery, {
+const PokedexWithData = graphql(TrainerQuery, {
   options: {
       variables: {
         name: "<your name>"
       }
     }
   }
-)(withRouter(PokemonPage))
+)(Pokedex)
 
 export default PokedexWithData
