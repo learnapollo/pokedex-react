@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Pokedex from './components/Pokedex'
+import PokemonPage from './components/PokemonPage'
 import { Router, Route, browserHistory } from 'react-router'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
@@ -15,6 +16,7 @@ ReactDOM.render((
   <ApolloProvider client={client}>
     <Router history={browserHistory}>
       <Route path='/' component={Pokedex} />
+      <Route path='/view/:pokemonId' component={PokemonPage} />
     </Router>
   </ApolloProvider>
   ),

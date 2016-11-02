@@ -2,7 +2,6 @@ import React from 'react'
 import { withRouter } from 'react-router'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { createFragment } from 'apollo-client'
 
 import PokemonCard from './PokemonCard'
 
@@ -31,8 +30,7 @@ class PokemonPage extends React.Component {
   }
 }
 
-const pokemonQuery = gql`
-  query pokemonQuery($id: ID!) {
+const PokemonQuery = gql`query($id: ID!) {
     Pokemon(id: $id) {
       id
       imageUrl
@@ -41,7 +39,7 @@ const pokemonQuery = gql`
   }
 `
 
-const PokemonPageWithQueries = graphql(pokemonQuery, {
+const PokemonPageWithQuery = graphql(PokemonQuery, {
   options: (ownProps) => ({
       variables: {
         id: ownProps.params.pokemonId
@@ -50,4 +48,4 @@ const PokemonPageWithQueries = graphql(pokemonQuery, {
   }
 )(withRouter(PokemonPage))
 
-export default PokemonPageWithQueries
+export default PokemonPageWithQuery
