@@ -60,7 +60,7 @@ const PokemonQuery = gql`query($id: ID!) {
   }
 `
 
-const PokemonPageWithData = graphql(pokemonQuery, {
+const PokemonPageWithData = graphql(PokemonQuery, {
   options: (ownProps) => ({
       variables: {
         id: ownProps.params.pokemonId
