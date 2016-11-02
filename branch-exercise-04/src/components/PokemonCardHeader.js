@@ -1,22 +1,10 @@
 import React from 'react'
-import Fragment from 'graphql-fragments'
 import gql from 'graphql-tag'
 
 export default class PokemonCardHeader extends React.Component {
 
-  static fragments = {
-    pokemon: new Fragment(gql`
-      fragment PokemonCardHeaderPokemon on Pokemon {
-        name
-        trainer {
-          name
-        }
-      }
-    `)
-  }
-
   static propTypes = {
-    pokemon: PokemonCardHeader.fragments.pokemon.propType,
+    pokemon: React.PropTypes.object.isRequired,
   }
 
   render () {

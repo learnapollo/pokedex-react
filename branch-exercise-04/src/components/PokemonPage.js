@@ -23,7 +23,6 @@ class PokemonPage extends React.Component {
 
     return (
       <div>
-        <PokemonCardHeader pokemon={PokemonCardHeader.fragments.pokemon.filter(pokemon)} />
         <PokemonCard pokemon={PokemonCard.fragments.pokemon.filter(pokemon)} handleCancel={this.goBack}/>
       </div>
     )
@@ -37,7 +36,6 @@ class PokemonPage extends React.Component {
 const PokemonQuery = gql`query($id: ID!) {
     Pokemon(id: $id) {
       ... PokemonCardPokemon
-      ... PokemonCardHeaderPokemon
     }
   }
 `
@@ -47,7 +45,7 @@ const PokemonPageWithData = graphql(PokemonQuery, {
       variables: {
         id: ownProps.params.pokemonId
       },
-      fragments: [PokemonCardHeader.fragments.pokemon.fragments(), PokemonCard.fragments.pokemon.fragments()]
+      fragments: [PokemonCard.fragments.pokemon.fragments()]
     })
   }
 )(withRouter(PokemonPage))
