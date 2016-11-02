@@ -50,8 +50,7 @@ const pokemonInfoFragment = createFragment(gql`
   }
 `)
 
-const pokemonQuery = gql`
-  query pokemonQuery($id: ID!) {
+const PokemonQuery = gql`query($id: ID!) {
     Pokemon(id: $id) {
       ... pokemonInfo
       trainer {
@@ -61,7 +60,7 @@ const pokemonQuery = gql`
   }
 `
 
-const PokemonPageWithQueries = graphql(pokemonQuery, {
+const PokemonPageWithData = graphql(pokemonQuery, {
   options: (ownProps) => ({
       variables: {
         id: ownProps.params.pokemonId
@@ -71,4 +70,4 @@ const PokemonPageWithQueries = graphql(pokemonQuery, {
   }
 )(withRouter(PokemonPage))
 
-export default PokemonPageWithQueries
+export default PokemonPageWithData

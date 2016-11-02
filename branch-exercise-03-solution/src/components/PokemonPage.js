@@ -39,7 +39,7 @@ const PokemonQuery = gql`query($id: ID!) {
   }
 `
 
-const PokemonPageWithQuery = graphql(PokemonQuery, {
+const PokemonPageWithData = graphql(PokemonQuery, {
   options: (ownProps) => ({
       variables: {
         id: ownProps.params.pokemonId
@@ -48,4 +48,4 @@ const PokemonPageWithQuery = graphql(PokemonQuery, {
   }
 )(withRouter(PokemonPage))
 
-export default PokemonPageWithQuery
+export default PokemonPageWithData
