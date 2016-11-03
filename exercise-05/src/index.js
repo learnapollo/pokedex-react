@@ -11,7 +11,7 @@ import './index.css'
 
 
 const client = new ApolloClient({
-  networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/ciuwgdxhn25po0151dv2imjad'}),
+  networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__'}),
 })
 
 ReactDOM.render((
