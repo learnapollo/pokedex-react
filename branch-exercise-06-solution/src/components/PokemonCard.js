@@ -49,7 +49,7 @@ class PokemonCard extends React.Component {
             <button className='pa3 bn dim ttu bg-red pointer' onClick={this.handleDelete}>Delete</button>
             <button className='pa3 bn dim ttu pointer' onClick={this.props.handleCancel}>Cancel</button>
             {this.canUpdate()
-              ? <button className='pa3 bn dim ttu bg-dark-green pointer' onClick={this.handleCancel}>Update</button>
+              ? <button className='pa3 bn dim ttu bg-dark-green pointer' onClick={this.handleUpdate}>Update</button>
               : <button className='pa3 bn ttu gray light-gray'>Update</button>
             }
           </div>
@@ -63,7 +63,7 @@ class PokemonCard extends React.Component {
       (this.props.pokemon.name !== this.state.name || this.props.pokemon.imageUrl !== this.state.imageUrl)
   }
 
-  handleCancel = () => {
+  handleUpdate = () => {
     this.props.updatePokemon({variables: {id: this.props.pokemon.id, name: this.state.name, imageUrl: this.state.imageUrl}})
       .then(this.props.afterUpdate)
   }
