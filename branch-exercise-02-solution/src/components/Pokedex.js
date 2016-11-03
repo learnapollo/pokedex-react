@@ -15,7 +15,7 @@ class Pokedex extends React.Component {
 
     return (
       <div className='w-100 bg-light-gray min-vh-100'>
-        <div className='tc pt4'>
+        <div className='tc pa5'>
           Hey {this.props.data.Trainer.name}, there are 0 Pokemons in your pokedex
         </div>
       </div>

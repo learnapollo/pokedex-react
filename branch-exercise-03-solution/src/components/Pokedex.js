@@ -17,10 +17,10 @@ class Pokedex extends React.Component {
 
     return (
       <div className='w-100 bg-light-gray min-vh-100'>
-        <div className='tc pt4'>
+        <div className='tc pa5'>
           Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
         </div>
-        <div className='flex flex-wrap items-stretch pt5 center mw7'>
+        <div className='flex flex-wrap justify-center center w-75'>
           {this.props.data.Trainer.ownedPokemons.map((pokemon) =>
             <PokemonPreview key={pokemon.id} pokemon={pokemon} />
           )}

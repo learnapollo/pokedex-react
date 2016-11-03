@@ -9,11 +9,12 @@ export default class AddPokemonPreview extends React.Component {
 
   render () {
     return (
-      <Link to={`/create/${this.props.trainerId}`} className='dib mw4 tc black link dim mr1 ml1 mb2 bg-white pa2'>
-        <div className='db'>
-          <span>+</span>
-        </div>
-        <span>Add Pokemon</span>
+      <Link
+        to={`/create/${this.props.trainerId}`}
+        style={{ minWidth: 200 }}
+        className='link dim mw4 ma2 ba b--dashed bw3 b--silver flex justify-center items-center'
+      >
+        <div className='silver tc v-mid fw4 f1'>+</div>
       </Link>
     )
   }
