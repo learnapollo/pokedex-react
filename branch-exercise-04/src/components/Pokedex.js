@@ -32,7 +32,6 @@ class Pokedex extends React.Component {
 
 const TrainerQuery = gql`query($name: String!) {
   Trainer(name: $name) {
-    id
     name
     ownedPokemons {
       id

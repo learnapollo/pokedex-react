@@ -27,7 +27,6 @@ class Pokedex extends React.Component {
 
 const TrainerQuery = gql`query {
   Trainer(name: "__NAME__") {
-    id
     name
   }
 }`
