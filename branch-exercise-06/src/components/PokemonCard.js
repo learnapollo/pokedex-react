@@ -16,6 +16,7 @@ class PokemonCard extends React.Component {
   static propTypes = {
     pokemon: PokemonCard.fragments.pokemon.propType,
     handleCancel: React.PropTypes.func.isRequired,
+    afterChange: React.PropTypes.func.isRequired,
   }
 
   state = {
@@ -65,7 +66,7 @@ class PokemonCard extends React.Component {
   }
 
   handleDelete = () => {
-    
+
   }
 }
 

@@ -18,7 +18,9 @@ class PokemonCard extends React.Component {
   static propTypes = {
     pokemon: PokemonCard.fragments.pokemon.propType,
     handleCancel: React.PropTypes.func.isRequired,
-    afterUpdate: React.PropTypes.func.isRequired,
+    afterChange: React.PropTypes.func.isRequired,
+    updatePokemon: React.PropTypes.func.isRequired,
+    deletePokemon: React.PropTypes.func.isRequired,
   }
 
   state = {
@@ -64,8 +66,13 @@ class PokemonCard extends React.Component {
   }
 
   handleUpdate = () => {
-    this.props.updatePokemon({variables: {id: this.props.pokemon.id, name: this.state.name, imageUrl: this.state.imageUrl}})
-      .then(this.props.afterUpdate)
+    this.props.updatePokemon({variables: { id: this.props.pokemon.id, name: this.state.name, imageUrl: this.state.imageUrl }})
+      .then(this.props.afterChange)
+  }
+
+  handleDelete = () => {
+    this.props.deletePokemon({variables: { id: this.props.pokemon.id }})
+      .then(this.props.afterChange)
   }
 }
 
@@ -90,6 +97,5 @@ const deletePokemon = gql`
 const PokemonCardWithMutations =  graphql(deletePokemon, {name : 'deletePokemon'})(
   graphql(updatePokemon, {name: 'updatePokemon'})(PokemonCard)
 )
-
 
 export default PokemonCardWithMutations
