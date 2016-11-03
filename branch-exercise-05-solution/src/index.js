@@ -9,7 +9,6 @@ import { ApolloProvider } from 'react-apollo'
 import 'tachyons'
 import './index.css'
 
-// set dataIdFromObject for normalization! otherwise different components might be out-of-sync
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__'}),
   dataIdFromObject: o => o.id
