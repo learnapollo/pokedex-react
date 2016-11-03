@@ -63,6 +63,10 @@ class PokemonCard extends React.Component {
   handleUpdate = () => {
 
   }
+
+  handleDelete = () => {
+    
+  }
 }
 
 export default PokemonCard
