@@ -27,7 +27,7 @@ class PokemonPage extends React.Component {
         <PokemonCard
           pokemon={PokemonCard.fragments.pokemon.filter(pokemon)}
           handleCancel={this.goBack}
-          afterUpdate={this.goBack} />
+          afterChange={this.goBack} />
       </div>
     )
   }
