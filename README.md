@@ -8,23 +8,21 @@ Pokedex React app using and teaching Apollo and GraphQL
 
 ## Getting started
 
-If you haven't done it already, checkout the [interactive Learn Apollo tutorial](https://learnapollo.org/).
+If you haven't done it already, checkout the [hands-on Learn Apollo tutorial](https://learnapollo.org/).
 
 ```sh
 git clone git@github.com:learnapollo/pokedex-react.git
 cd pokedex-react
-git checkout step-01
-npm install
-npm start # open localhost:3000
+cd exercise-01
+yarn install
+yarn start # open localhost:3000
 ```
 
 ## Workflow
 
-As you're following along the chapters in Learn Apollo, you will work on seven small coding excercises each called a "step". Each step and its solution is available in this repository as an individual branch where you can jump between if needed.
+As you're following along the Learn Apollo tutorial, you will work on different coding excercises. Each exercise has a folder that you can use to start working and a solution folder where you can take a peek if the instructions given on Learn Apollo are not clear enough.
 
-Let's say you want to start with step 3, so you would run `git checkout step-03`. In case you're not too familiar with `git`, this command switches you over to the `step-03` branch. The `node_modules` folder doesn't change, that means you don't need to run `npm install` again.
-
-After you completed the step, you can compare your results to the official solution by running `git diff origin/step-03-solution`. In the best possible case this command shouldn't give you any output which means your and our solution are identical. It can happen that you found a different solution than we're proposing. That's totally fine, just continue with the next step and feel free to [tell us](http://slack.graph.cool/) about your solution. 💡
+After you completed the step, you can compare your results to the official solution by looking into the respective folder. If you found a different solution than we're proposing, feel free to [tell us](http://slack.graph.cool/) about your solution. 💡
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
 
