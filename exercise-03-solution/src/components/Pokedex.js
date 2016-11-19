@@ -36,7 +36,7 @@ const TrainerQuery = gql`query($name: String!) {
     ownedPokemons {
       id
       name
-      imageUrl
+      url
     }
   }
 }`

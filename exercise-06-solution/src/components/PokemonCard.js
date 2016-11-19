@@ -9,7 +9,7 @@ class PokemonCard extends React.Component {
     pokemon: new Fragment(gql`
       fragment PokemonCardPokemon on Pokemon {
         id
-        imageUrl
+        url
         name
       }
     `)
@@ -25,7 +25,7 @@ class PokemonCard extends React.Component {
 
   state = {
     name: this.props.pokemon.name,
-    imageUrl: this.props.pokemon.imageUrl,
+    url: this.props.pokemon.url,
   }
 
   render () {
@@ -40,12 +40,12 @@ class PokemonCard extends React.Component {
           />
           <input
             className='w-100 pa3 mv2'
-            value={this.state.imageUrl}
+            value={this.state.url}
             placeholder='Image Url'
-            onChange={(e) => this.setState({imageUrl: e.target.value})}
+            onChange={(e) => this.setState({url: e.target.value})}
           />
-          {this.state.imageUrl &&
-            <img src={this.state.imageUrl} role='presentation' className='w-100 mv3' />
+          {this.state.url &&
+            <img src={this.state.url} role='presentation' className='w-100 mv3' />
           }
           <div className='flex justify-between'>
             <button className='pa3 bn dim ttu bg-red pointer' onClick={this.handleDelete}>Delete</button>
@@ -61,12 +61,12 @@ class PokemonCard extends React.Component {
   }
 
   canUpdate = () => {
-    return this.state.name && this.state.imageUrl &&
-      (this.props.pokemon.name !== this.state.name || this.props.pokemon.imageUrl !== this.state.imageUrl)
+    return this.state.name && this.state.url &&
+      (this.props.pokemon.name !== this.state.name || this.props.pokemon.url !== this.state.url)
   }
 
   handleUpdate = () => {
-    this.props.updatePokemon({variables: { id: this.props.pokemon.id, name: this.state.name, imageUrl: this.state.imageUrl }})
+    this.props.updatePokemon({variables: { id: this.props.pokemon.id, name: this.state.name, url: this.state.url }})
       .then(this.props.afterChange)
   }
 
@@ -77,11 +77,11 @@ class PokemonCard extends React.Component {
 }
 
 const updatePokemon = gql`
-  mutation updatePokemon($id: ID!, $name: String!, $imageUrl: String!) {
-    updatePokemon(id: $id, name: $name, imageUrl: $imageUrl) {
+  mutation updatePokemon($id: ID!, $name: String!, $url: String!) {
+    updatePokemon(id: $id, name: $name, url: $url) {
       id
       name
-      imageUrl
+      url
     }
   }
 `

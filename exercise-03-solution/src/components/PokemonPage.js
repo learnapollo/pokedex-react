@@ -33,7 +33,7 @@ class PokemonPage extends React.Component {
 const PokemonQuery = gql`query($id: ID!) {
     Pokemon(id: $id) {
       id
-      imageUrl
+      url
       name
     }
   }

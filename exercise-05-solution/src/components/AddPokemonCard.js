@@ -13,7 +13,7 @@ class AddPokemonCard extends React.Component {
 
   state = {
     name: '',
-    imageUrl: '',
+    url: '',
   }
 
   render () {
@@ -28,12 +28,12 @@ class AddPokemonCard extends React.Component {
           />
           <input
             className='w-100 pa3 mv2'
-            value={this.state.imageUrl}
+            value={this.state.url}
             placeholder='Image Url'
-            onChange={(e) => this.setState({imageUrl: e.target.value})}
+            onChange={(e) => this.setState({url: e.target.value})}
           />
-          {this.state.imageUrl &&
-            <img src={this.state.imageUrl} role='presentation' className='w-100 mv3' />
+          {this.state.url &&
+            <img src={this.state.url} role='presentation' className='w-100 mv3' />
           }
           <div className='flex justify-between'>
             <button className='pa3 bn dim ttu pointer' onClick={this.handleCancel}>Cancel</button>
@@ -48,13 +48,13 @@ class AddPokemonCard extends React.Component {
   }
 
   canSave = () => {
-    return this.state.name && this.state.imageUrl
+    return this.state.name && this.state.url
   }
 
   handleSave = () => {
-    const {name, imageUrl} = this.state
+    const {name, url} = this.state
     const trainerId = this.props.params.trainerId
-    this.props.mutate({variables: {name, imageUrl, trainerId}})
+    this.props.mutate({variables: {name, url, trainerId}})
       .then(() => {
         this.props.router.replace('/')
       })
@@ -66,8 +66,8 @@ class AddPokemonCard extends React.Component {
 }
 
 const createPokemonMutation = gql`
-  mutation ($name: String!, $imageUrl: String!, $trainerId: ID) {
-    createPokemon(name: $name, imageUrl: $imageUrl, trainerId: $trainerId) {
+  mutation ($name: String!, $url: String!, $trainerId: ID) {
+    createPokemon(name: $name, url: $url, trainerId: $trainerId) {
       trainer {
         id
         ownedPokemons {

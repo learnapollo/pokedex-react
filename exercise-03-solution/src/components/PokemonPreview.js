@@ -14,7 +14,7 @@ export default class PokemonPreview extends React.Component {
         style={{ minWidth: 200 }}
         className='link dim grow mw4 bg-white ma2 pa3 shadow-1'
       >
-        <img src={this.props.pokemon.imageUrl} alt={this.props.pokemon.name} />
+        <img src={this.props.pokemon.url} alt={this.props.pokemon.name} />
         <div className='gray tc'>{this.props.pokemon.name}</div>
       </Link>
     )
