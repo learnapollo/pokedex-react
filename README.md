@@ -2,7 +2,7 @@
 
 Pokedex React app using and teaching Apollo and GraphQL
 
-> **Live Demo: [http://demo.learnapollo.org](http://demo.learnapollo.org/)**
+> **Live Demo: [http://demo.learnapollo.org](http://demo.learnapollo.com/)**
 
 ![](https://i.gyazo.com/adcc4675cd466195adf727ba8a32b544.gif)
 
