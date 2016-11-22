@@ -1,20 +1,19 @@
 import React from 'react'
-import Fragment from 'graphql-fragments'
+import { propType } from 'graphql-anywhere'
 import gql from 'graphql-tag'
 
 class PokemonCard extends React.Component {
 
   static fragments = {
-    pokemon: new Fragment(gql`
+    pokemon: gql`
       fragment PokemonCardPokemon on Pokemon {
         url
         name
       }
-    `)
+    `
   }
-
   static propTypes = {
-    pokemon: PokemonCard.fragments.pokemon.propType,
+    pokemon: propType(PokemonCard.fragments.pokemon).isRequired,
     handleCancel: React.PropTypes.func.isRequired,
     afterChange: React.PropTypes.func.isRequired,
   }
