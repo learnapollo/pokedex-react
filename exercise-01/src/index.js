@@ -8,7 +8,7 @@ import 'tachyons'
 import './index.css'
 
 const client = new ApolloClient({
-  networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID_'}),
+  networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__'}),
 })
 
 ReactDOM.render((
