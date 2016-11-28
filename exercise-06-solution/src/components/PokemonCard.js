@@ -80,10 +80,10 @@ const updatePokemon = gql`
   mutation updatePokemon($id: ID!, $name: String!, $url: String!) {
     updatePokemon(id: $id, name: $name, url: $url) {
       id
-      name
-      url
+      ... PokemonCardPokemon
     }
   }
+  ${PokemonCard.fragments.pokemon}
 `
 
 const deletePokemon = gql`
