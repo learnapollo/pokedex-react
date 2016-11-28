@@ -40,7 +40,7 @@ class Pokedex extends React.Component {
   }
 }
 
-const TrainerQuery = gql`query($name: String!) {
+const TrainerQuery = gql`query TrainerQuery($name: String!) {
   Trainer(name: $name) {
     name
     ownedPokemons {

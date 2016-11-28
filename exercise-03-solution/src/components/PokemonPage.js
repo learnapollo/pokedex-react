@@ -39,7 +39,7 @@ class PokemonPage extends React.Component {
   }
 }
 
-const PokemonQuery = gql`query($id: ID!) {
+const PokemonQuery = gql`query PokemonQuery($id: ID!) {
     Pokemon(id: $id) {
       id
       url
