@@ -54,7 +54,7 @@ const TrainerQuery = gql`query TrainerQuery($name: String!) {
 const PokedexWithData = graphql(TrainerQuery, {
   options: {
       variables: {
-        name: "__NAME__"
+        name: '__NAME__'
       }
     }
   }
