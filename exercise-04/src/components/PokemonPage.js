@@ -9,7 +9,11 @@ import PokemonCardHeader from './PokemonCardHeader'
 class PokemonPage extends React.Component {
 
   static propTypes = {
-    data: React.PropTypes.object.isRequired,
+    data: React.PropTypes.shape({
+      loading: React.PropTypes.bool,
+      error: React.PropTypes.object,
+      Pokemon: React.PropTypes.object,
+    }).isRequired,
     router: React.PropTypes.object.isRequired,
     params: React.PropTypes.object.isRequired,
   }
@@ -17,6 +21,11 @@ class PokemonPage extends React.Component {
   render () {
     if (this.props.data.loading) {
       return (<div>Loading</div>)
+    }
+
+    if (this.props.data.error) {
+      console.log(this.props.data.error)
+      return (<div>An unexpexted error occured</div>)
     }
 
     const pokemon = this.props.data.Pokemon

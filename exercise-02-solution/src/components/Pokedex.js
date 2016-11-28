@@ -5,12 +5,21 @@ import gql from 'graphql-tag'
 class Pokedex extends React.Component {
 
   static propTypes = {
-    data: React.PropTypes.object.isRequired,
+    data: React.PropTypes.shape({
+      loading: React.PropTypes.bool,
+      error: React.PropTypes.object,
+      Trainer: React.PropTypes.object,
+    }).isRequired,
   }
 
   render () {
     if (this.props.data.loading) {
       return (<div>Loading</div>)
+    }
+
+    if (this.props.data.error) {
+      console.log(this.props.data.error)
+      return (<div>An unexpexted error occured</div>)
     }
 
     return (
