@@ -11,7 +11,6 @@ const POKEMONS_PER_PAGE = 3
 
 class Pokedex extends React.Component {
 
-
   static propTypes = {
     data: React.PropTypes.shape({
       loading: React.PropTypes.bool,
@@ -47,33 +46,27 @@ class Pokedex extends React.Component {
       return (<div>An unexpexted error occured</div>)
     }
 
-    if (this.props.data.Trainer.ownedPokemons.length === 0 && this.props.params.page !== '1') {
-      this.props.router.replace('/1')
-    }
-
     return (
       <div className='w-100 bg-light-gray min-vh-100'>
         <div className='tc pa5'>
-          Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer._ownedPokemonsMeta.count} Pokemons in your pokedex
+          Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
         </div>
         <div className='flex flex-wrap justify-center center w-75'>
-          <PageNavigation onClick={this._previousPage} isPrevious={true} />
           {this.props.params.page === '1' && <AddPokemonPreview trainerId={this.props.data.Trainer.id} />}
           {this.props.data.Trainer.ownedPokemons.map((pokemon) =>
             <PokemonPreview key={pokemon.id} pokemon={pokemon} />
           )}
-          <PageNavigation onClick={this._nextPage} isPrevious={false} />
         </div>
       </div>
     )
   }
 }
 
-const TrainerQuery = gql`query TrainerQuery($name: String!, $first: Int!, $skip: Int!) {
+const TrainerQuery = gql`query TrainerQuery($name: String!) {
   Trainer(name: $name) {
     id
     name
-    ownedPokemons(first: $first, skip: $skip) {
+    ownedPokemons {
       id
       name
       url
@@ -88,8 +81,6 @@ const PokedexWithData = graphql(TrainerQuery, {
     options: (ownProps) => ({
       variables: {
         name: '__NAME__',
-        skip: (ownProps.params.page - 1) * POKEMONS_PER_PAGE,
-        first: POKEMONS_PER_PAGE,
       }
     })
   }
