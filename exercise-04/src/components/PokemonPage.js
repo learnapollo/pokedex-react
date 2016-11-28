@@ -32,7 +32,7 @@ class PokemonPage extends React.Component {
 
     return (
       <div>
-        <PokemonCard pokemon={filter(PokemonCard.fragments.pokemon, pokemon)} handleCancel={this.goBack}/>
+        <PokemonCard pokemon={pokemon} handleCancel={this.goBack}/>
       </div>
     )
   }
