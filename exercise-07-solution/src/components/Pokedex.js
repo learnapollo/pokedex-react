@@ -22,19 +22,19 @@ class Pokedex extends React.Component {
   }
 
   _nextPage = () => {
-    if (this.props.data.Trainer._ownedPokemonsMeta.count > this.props.params.page * POKEMONS_PER_PAGE) {
-      this.props.router.replace(`/${+this.props.params.page + 1}`)
-    } else {
-      console.log('last page')
-    }
+    this.props.router.replace(`/${+this.props.params.page + 1}`)
   }
 
   _previousPage = () => {
-    if (this.props.params.page > 1) {
-      this.props.router.replace(`/${+this.props.params.page - 1}`)
-    } else {
-      console.log('first page')
-    }
+    this.props.router.replace(`/${+this.props.params.page - 1}`)
+  }
+
+  _isFirstPage = () => {
+    return this.props.params.page === '1'
+  }
+
+  _isLastPage = () => {
+    return this.props.data.Trainer._ownedPokemonsMeta.count <= this.props.params.page * POKEMONS_PER_PAGE
   }
 
   render () {
@@ -57,12 +57,12 @@ class Pokedex extends React.Component {
           Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer._ownedPokemonsMeta.count} Pokemons in your pokedex
         </div>
         <div className='flex flex-wrap justify-center center w-75'>
-          <PageNavigation onClick={this._previousPage} isPrevious={true} />
+          {!this._isFirstPage() && <PageNavigation onClick={this._previousPage} isPrevious={true} />}
           {this.props.params.page === '1' && <AddPokemonPreview trainerId={this.props.data.Trainer.id} />}
           {this.props.data.Trainer.ownedPokemons.map((pokemon) =>
             <PokemonPreview key={pokemon.id} pokemon={pokemon} />
           )}
-          <PageNavigation onClick={this._nextPage} isPrevious={false} />
+          {!this._isLastPage() && <PageNavigation onClick={this._nextPage} isPrevious={false} />}
         </div>
       </div>
     )

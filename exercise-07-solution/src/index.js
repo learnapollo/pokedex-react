@@ -19,7 +19,7 @@ ReactDOM.render((
   <ApolloProvider client={client}>
     <Router history={browserHistory}>
       <Route path='/' component={Pokedex}>
-        <IndexRedirect to="/1" />
+        <IndexRedirect to='/1' />
         <Route path='/:page' component={Pokedex} />
       </Route>
       <Route path='/view/:pokemonId' component={PokemonPage} />
