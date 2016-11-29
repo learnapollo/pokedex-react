@@ -68,12 +68,7 @@ class AddPokemonCard extends React.Component {
 const createPokemonMutation = gql`
   mutation createPokemon($name: String!, $url: String!, $trainerId: ID) {
     createPokemon(name: $name, url: $url, trainerId: $trainerId) {
-      trainer {
-        id
-        ownedPokemons {
-          id
-        }
-      }
+      id
     }
   }
 `

@@ -55,11 +55,12 @@ const TrainerQuery = gql`query TrainerQuery($name: String!) {
 
 const PokedexWithData = graphql(TrainerQuery, {
   options: {
-      variables: {
-        name: '__NAME__'
-      }
-    }
+    variables: {
+      name: '__NAME__'
+    },
+    forceFetch: true,
   }
+}
 )(Pokedex)
 
 export default PokedexWithData
