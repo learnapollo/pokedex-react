@@ -47,7 +47,8 @@ class Pokedex extends React.Component {
       return (<div>An unexpexted error occured</div>)
     }
 
-    if (this.props.data.Trainer.ownedPokemons.length === 0 && this.props.params.page !== '1') {
+    if ((this.props.data.Trainer._ownedPokemonsMeta.count === 0 && !this._isFirstPage())
+      || isNaN(this.props.params.page)) {
       this.props.router.replace('/1')
     }
 
@@ -88,11 +89,16 @@ const PokedexWithData = graphql(TrainerQuery, {
     options: (ownProps) => ({
       variables: {
         name: '__NAME__',
-        skip: (ownProps.params.page - 1) * POKEMONS_PER_PAGE,
+        skip: (
+          ownProps.params &&
+          ownProps.params.page &&
+          (ownProps.params.page - 1) * POKEMONS_PER_PAGE
+        ) || 0,
         first: POKEMONS_PER_PAGE,
-      }
+      },
+      forceFetch: true,
     })
-  }
+}
 )(withRouter(Pokedex))
 
 export default PokedexWithData

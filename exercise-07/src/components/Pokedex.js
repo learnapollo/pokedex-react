@@ -21,19 +21,19 @@ class Pokedex extends React.Component {
   }
 
   _nextPage = () => {
-    if (this.props.data.Trainer._ownedPokemonsMeta.count > this.props.params.page * POKEMONS_PER_PAGE) {
-      this.props.router.replace(`/${+this.props.params.page + 1}`)
-    } else {
-      console.log('last page')
-    }
+    this.props.router.replace(`/${+this.props.params.page + 1}`)
   }
 
   _previousPage = () => {
-    if (this.props.params.page > 1) {
-      this.props.router.replace(`/${+this.props.params.page - 1}`)
-    } else {
-      console.log('first page')
-    }
+    this.props.router.replace(`/${+this.props.params.page - 1}`)
+  }
+
+  _isFirstPage = () => {
+    return this.props.params.page === '1'
+  }
+
+  _isLastPage = () => {
+    return this.props.data.Trainer._ownedPokemonsMeta.count <= this.props.params.page * POKEMONS_PER_PAGE
   }
 
   render () {
