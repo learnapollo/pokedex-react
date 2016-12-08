@@ -48,7 +48,9 @@ class Pokedex extends React.Component {
     }
 
     if ((this.props.data.Trainer._ownedPokemonsMeta.count === 0 && !this._isFirstPage())
-      || isNaN(this.props.params.page)) {
+      || isNaN(this.props.params.page)
+      || this.props.data.Trainer._ownedPokemonsMeta.count < (this.props.params.page - 1) * POKEMONS_PER_PAGE
+      || this.props.params.page < 1) {
       this.props.router.replace('/1')
     }
 
@@ -98,7 +100,7 @@ const PokedexWithData = graphql(TrainerQuery, {
       },
       forceFetch: true,
     })
-}
+  }
 )(withRouter(Pokedex))
 
 export default PokedexWithData

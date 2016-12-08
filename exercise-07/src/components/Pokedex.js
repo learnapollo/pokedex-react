@@ -52,7 +52,7 @@ class Pokedex extends React.Component {
           Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
         </div>
         <div className='flex flex-wrap justify-center center w-75'>
-          {this.props.params.page === '1' && <AddPokemonPreview trainerId={this.props.data.Trainer.id} />}
+          {this._isFirstPage() && <AddPokemonPreview trainerId={this.props.data.Trainer.id} />}
           {this.props.data.Trainer.ownedPokemons.map((pokemon) =>
             <PokemonPreview key={pokemon.id} pokemon={pokemon} />
           )}
@@ -82,6 +82,8 @@ const PokedexWithData = graphql(TrainerQuery, {
       variables: {
         name: '__NAME__',
       }
+      },
+      forceFetch: true,
     })
   }
 )(withRouter(Pokedex))
