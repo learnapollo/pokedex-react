@@ -34,7 +34,10 @@ class PokemonPage extends React.Component {
     return (
       <div>
         <PokemonCardHeader pokemon={filter(PokemonCardHeader.fragments.pokemon, pokemon)} />
-        <PokemonCard pokemon={filter(PokemonCard.fragments.pokemon, pokemon)} handleCancel={this.goBack}/>
+        <PokemonCard
+          pokemon={filter(PokemonCard.fragments.pokemon, pokemon)}
+          handleCancel={this.goBack}
+          afterChange={this.goBack} />
       </div>
     )
   }
