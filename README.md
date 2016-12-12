@@ -8,7 +8,7 @@ Pokedex React app using and teaching Apollo and GraphQL
 
 ## Getting started
 
-If you haven't done it already, checkout the [hands-on Learn Apollo tutorial](https://learnapollo.org/).
+If you haven't done it already, checkout the [hands-on Learn Apollo tutorial](https://learnapollo.com/).
 
 ```sh
 git clone git@github.com:learnapollo/pokedex-react.git
