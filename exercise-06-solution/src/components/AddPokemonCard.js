@@ -2,6 +2,33 @@ import React from 'react'
 import { withRouter } from 'react-router'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import styled from 'styled-components'
+
+const Button = styled.div`
+  background-color: ${props => props.save ? '#2BC3A1' : ''};
+  color: ${props => props.save ? 'white' : '#A3A3A3'};
+  height: 48px;
+  line-height: 1;
+  font-size: 18px;
+  padding: 15px 30px;
+  cursor: pointer;
+  font-weight: 300;
+  border-radius: 4px
+`
+
+const ImageContainer = styled.div`
+  width: 100%;
+  background-color: #F7F7F7;
+  min-height: 250px;
+  margin-bottom: 20px;
+`
+
+const Card = styled.div`
+  background-color: white;
+  box-shadow: 0 1px 11px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  padding: 20px;
+`
 
 class AddPokemonCard extends React.Component {
 
@@ -19,7 +46,7 @@ class AddPokemonCard extends React.Component {
   render () {
     return (
       <div className='w-100 pa4 flex justify-center'>
-        <div style={{ maxWidth: 400 }} className=''>
+        <Card style={{ maxWidth: 400 }} className=''>
           <input
             className='w-100 pa3 mv2'
             value={this.state.name}
@@ -32,17 +59,19 @@ class AddPokemonCard extends React.Component {
             placeholder='Image Url'
             onChange={(e) => this.setState({url: e.target.value})}
           />
-          {this.state.url &&
+          <ImageContainer>
+            {this.state.url &&
             <img src={this.state.url} role='presentation' className='w-100 mv3' />
-          }
+            }
+          </ImageContainer>
           <div className='flex justify-between'>
-            <button className='pa3 bn dim ttu pointer' onClick={this.handleCancel}>Cancel</button>
+            <Button onClick={this.handleCancel}>Cancel</Button>
             {this.canSave()
-              ? <button className='pa3 bn dim ttu bg-dark-green pointer' onClick={this.handleSave}>Save</button>
-              : <button className='pa3 bn ttu gray light-gray'>Save</button>
+              ? <Button save onClick={this.handleSave}>Save</Button>
+              : <Button disabled>Save</Button>
             }
           </div>
-        </div>
+        </Card>
       </div>
     )
   }
