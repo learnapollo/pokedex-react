@@ -14,7 +14,7 @@ export default class PageNavigation extends React.Component {
         style={{ minWidth: 200 }}
         className='link dim mw4 ma2 flex justify-center items-center'
       >
-        <div className='silver tc v-mid fw4 f1'>{this.props.isPrevious ? '<' : '>'}</div>
+        <div className='silver tc v-mid fw4 f1 pointer'>{this.props.isPrevious ? '<' : '>'}</div>
       </div>
     )
   }

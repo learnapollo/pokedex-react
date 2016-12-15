@@ -1,5 +1,14 @@
 import React from 'react'
 import gql from 'graphql-tag'
+import styled from 'styled-components'
+
+const Title = styled.div`
+  color: #7F7F7F;
+  font-size: 32px;
+  font-weight: 300;
+  max-width: 400px;
+  margin-top: 50px;
+`
 
 export default class PokemonCardHeader extends React.Component {
 
@@ -9,10 +18,8 @@ export default class PokemonCardHeader extends React.Component {
 
   render () {
     return (
-      <div className='w-100 pa4 flex justify-center'>
-        <div style={{ maxWidth: 400 }} className=''>
-          <span className='w-100 pa3 mv2'>{this.props.pokemon.name} owned by {this.props.pokemon.trainer.name}</span>
-        </div>
+      <div className='w-100 flex justify-center'>
+        <Title>{this.props.pokemon.name} owned by {this.props.pokemon.trainer.name}</Title>
       </div>
     )
   }

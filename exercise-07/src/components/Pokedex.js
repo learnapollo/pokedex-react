@@ -2,12 +2,19 @@ import React from 'react'
 import { graphql } from 'react-apollo'
 import { withRouter } from 'react-router'
 import gql from 'graphql-tag'
+import styled from 'styled-components'
 
 import PokemonPreview from '../components/PokemonPreview'
 import AddPokemonPreview from '../components/AddPokemonPreview'
 import PageNavigation from '../components/PageNavigation'
 
 const POKEMONS_PER_PAGE = 3
+
+const Title = styled.div`
+  color: #7F7F7F;
+  font-size: 32px;
+  font-weight: 300;
+`
 
 class Pokedex extends React.Component {
 
@@ -48,9 +55,9 @@ class Pokedex extends React.Component {
 
     return (
       <div className='w-100 bg-light-gray min-vh-100'>
-        <div className='tc pa5'>
+        <Title className='tc pa5'>
           Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
-        </div>
+        </Title>
         <div className='flex flex-wrap justify-center center w-75'>
           {this._isFirstPage() && <AddPokemonPreview trainerId={this.props.data.Trainer.id} />}
           {this.props.data.Trainer.ownedPokemons.map((pokemon) =>

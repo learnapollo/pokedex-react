@@ -1,8 +1,15 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import styled from 'styled-components'
 
 import PokemonPreview from '../components/PokemonPreview'
+
+const Title = styled.div`
+  color: #7F7F7F;
+  font-size: 32px;
+  font-weight: 300;
+`
 
 class Pokedex extends React.Component {
 
@@ -26,9 +33,9 @@ class Pokedex extends React.Component {
 
     return (
       <div className='w-100 bg-light-gray min-vh-100'>
-        <div className='tc pa5'>
+        <Title className='tc pa5'>
           Hey {this.props.data.Trainer.name}, there are 0 Pokemons in your pokedex
-        </div>
+        </Title>
       </div>
     )
   }
