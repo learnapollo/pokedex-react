@@ -6,8 +6,7 @@ node_modules
 # testing
 coverage
 # production
-build
-!hosted-demo/build
+**/build
 
 # misc
 .DS_Store

@@ -50,7 +50,7 @@ class Pokedex extends React.Component {
 
     if (this.props.data.error) {
       console.log(this.props.data.error)
-      return (<div>An unexpexted error occurred</div>)
+      return (<div>An unexpected error occurred</div>)
     }
 
     if ((this.props.data.Trainer._ownedPokemonsMeta.count === 0 && !this._isFirstPage())
