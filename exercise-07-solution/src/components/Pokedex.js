@@ -44,6 +44,7 @@ class Pokedex extends React.Component {
   _previousPage = () => {
     this.props.router.replace(`/${+this.props.params.page - 1}`)
   }
+
   _isFirstPage = () => {
     return this.props.params.page === '1'
   }
@@ -98,7 +99,7 @@ const TrainerQuery = gql`query TrainerQuery($name: String!, $first: Int!, $skip:
 const PokedexWithData = graphql(TrainerQuery, {
     options: (ownProps) => ({
       variables: {
-        name: 'Victor Alvarez',
+        name: '__NAME__',
         skip: (
           ownProps.params &&
           ownProps.params.page &&
