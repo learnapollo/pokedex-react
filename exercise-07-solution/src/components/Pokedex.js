@@ -27,6 +27,16 @@ class Pokedex extends React.Component {
     router: React.PropTypes.object.isRequired,
   }
 
+  componentWillReceiveProps({ router, data: { Trainer }, params: { page } }) {
+    if (!Trainer) {
+      return
+    }
+    const pokemonCount = Trainer._ownedPokemonsMeta.count
+    if ((!pokemonCount && !this._isFirstPage()) || isNaN(page) || pokemonCount < (page - 1) * POKEMONS_PER_PAGE || page < 1) {
+      router.replace('/1')
+    }
+  }
+
   _nextPage = () => {
     this.props.router.replace(`/${+this.props.params.page + 1}`)
   }
@@ -34,7 +44,6 @@ class Pokedex extends React.Component {
   _previousPage = () => {
     this.props.router.replace(`/${+this.props.params.page - 1}`)
   }
-
   _isFirstPage = () => {
     return this.props.params.page === '1'
   }
@@ -51,13 +60,6 @@ class Pokedex extends React.Component {
     if (this.props.data.error) {
       console.log(this.props.data.error)
       return (<div>An unexpected error occured</div>)
-    }
-
-    if ((this.props.data.Trainer._ownedPokemonsMeta.count === 0 && !this._isFirstPage())
-      || isNaN(this.props.params.page)
-      || this.props.data.Trainer._ownedPokemonsMeta.count < (this.props.params.page - 1) * POKEMONS_PER_PAGE
-      || this.props.params.page < 1) {
-      this.props.router.replace('/1')
     }
 
     return (
@@ -96,7 +98,7 @@ const TrainerQuery = gql`query TrainerQuery($name: String!, $first: Int!, $skip:
 const PokedexWithData = graphql(TrainerQuery, {
     options: (ownProps) => ({
       variables: {
-        name: '__NAME__',
+        name: 'Victor Alvarez',
         skip: (
           ownProps.params &&
           ownProps.params.page &&
